@@ -1,0 +1,176 @@
+{
+    "variable": [
+        {
+            "id": "baseUrl",
+            "key": "baseUrl",
+            "type": "string",
+            "name": "string",
+            "value": "http:\/\/localhost:8000"
+        }
+    ],
+    "info": {
+        "name": "Test Task",
+        "_postman_id": "3bcbeb67-ce9f-47c8-a4fe-c7adc9909428",
+        "description": "Rest Apis For Processing DemoTestInquires Using Job & Queues",
+        "schema": "https:\/\/schema.getpostman.com\/json\/collection\/v2.1.0\/collection.json"
+    },
+    "item": [
+        {
+            "name": "Endpoints",
+            "description": "",
+            "item": [
+                {
+                    "name": "Store Demo Test Inquiry Payload",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/demo\/test",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/demo\/test"
+                        },
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\"payload\":[{\"ref\":\"T-1\",\"name\":\"test\",\"description\":null},{\"ref\":\"T-2\",\"name\":\"test\",\"description\":\"Test description\"}]}"
+                        },
+                        "description": "This endpoint is used to store a test inquiry payload to the system\nand then schedule a job to insert test payload items in the system.",
+                        "auth": {
+                            "type": "noauth"
+                        }
+                    },
+                    "response": [
+                        {
+                            "header": [],
+                            "code": 201,
+                            "body": "{\n \"success\": true,\n \"data\": null,\n \"message\": \"Successfully Scheduled\"\n}",
+                            "name": "success"
+                        },
+                        {
+                            "header": [],
+                            "code": 422,
+                            "body": "{\n  \"success\": false,\n  \"data\": null,\n  \"message\": \"some error msg\"\n}",
+                            "name": "Some Validation Error || ref in db found with status inactive || Other Exception"
+                        }
+                    ]
+                },
+                {
+                    "name": "Activate Test",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/demo\/test\/activate\/:ref",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/demo\/test\/activate\/:ref",
+                            "variable": [
+                                {
+                                    "id": "ref",
+                                    "key": "ref",
+                                    "value": "T-2",
+                                    "description": "needs to be exist in the database and the record  must be inactive priorly."
+                                }
+                            ]
+                        },
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\"ref\":\"laboriosam\"}"
+                        },
+                        "description": "This endpoint is used to activate a test.",
+                        "auth": {
+                            "type": "noauth"
+                        }
+                    },
+                    "response": [
+                        {
+                            "header": [],
+                            "code": 200,
+                            "body": "{\n     \"success\": true,\n     \"data\": {\n          \"id\": 2,\n          \"ref\": \"T-2\",\n          \"name\": \"test\",\n          \"description\": \"Test description\",\n          \"status\": \"NEW\",\n          \"is_active\": 1,\n          \"created_at\": \"2023-11-26T16:30:02.000000Z\",\n          \"updated_at\": \"2023-11-26T20:29:21.000000Z\"\n     },\n     \"message\": \"Test activated successfully\"\n }",
+                            "name": "success"
+                        },
+                        {
+                            "header": [],
+                            "code": 422,
+                            "body": "{\n   \"success\": false,\n   \"data\": null,\n   \"message\": \"The test either does not exist or already activated.\"\n}",
+                            "name": "Some Validation Error || ref in db found with status inactive || Other Exception"
+                        }
+                    ]
+                },
+                {
+                    "name": "Deactivate Test",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/demo\/test\/deactivate\/:ref",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/demo\/test\/deactivate\/:ref",
+                            "variable": [
+                                {
+                                    "id": "ref",
+                                    "key": "ref",
+                                    "value": "T-2",
+                                    "description": "needs to be exist in the database and the record  must be active priorly."
+                                }
+                            ]
+                        },
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\"ref\":\"expedita\"}"
+                        },
+                        "description": "This endpoint is used to deactivate a test.",
+                        "auth": {
+                            "type": "noauth"
+                        }
+                    },
+                    "response": [
+                        {
+                            "header": [],
+                            "code": 200,
+                            "body": "{\n    \"success\": true,\n    \"data\": {\n         \"id\": 2,\n         \"ref\": \"T-2\",\n         \"name\": \"test\",\n         \"description\": \"Test description\",\n         \"status\": \"NEW\",\n         \"is_active\": 0,\n         \"created_at\": \"2023-11-26T16:30:02.000000Z\",\n         \"updated_at\": \"2023-11-26T20:29:21.000000Z\"\n    },\n    \"message\": \"Test deactivated successfully\"\n}",
+                            "name": "success"
+                        },
+                        {
+                            "header": [],
+                            "code": 422,
+                            "body": "{\n    \"success\": false,\n    \"data\": null,\n    \"message\": \"The test either does not exist or already deactivated.\"\n }",
+                            "name": "Some Validation Error || ref in db found with status inactive || Other Exception"
+                        }
+                    ]
+                }
+            ]
+        }
+    ],
+    "auth": {
+        "type": "noauth"
+    }
+}

@@ -1,0 +1,310 @@
+openapi: 3.0.3
+info:
+  title: 'Test Task'
+  description: 'Rest Apis For Processing DemoTestInquires Using Job & Queues'
+  version: 1.0.0
+servers:
+  -
+    url: 'http://localhost:8000'
+paths:
+  /api/demo/test:
+    post:
+      summary: 'Store Demo Test Inquiry Payload'
+      operationId: storeDemoTestInquiryPayload
+      description: "This endpoint is used to store a test inquiry payload to the system\nand then schedule a job to insert test payload items in the system."
+      parameters: []
+      responses:
+        201:
+          description: success
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  success: true
+                  data: null
+                  message: 'Successfully Scheduled'
+                properties:
+                  success:
+                    type: boolean
+                    example: true
+                  data:
+                    type: string
+                    example: null
+                  message:
+                    type: string
+                    example: 'Successfully Scheduled'
+        422:
+          description: 'Some Validation Error || ref in db found with status inactive || Other Exception'
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  success: false
+                  data: null
+                  message: 'some error msg'
+                properties:
+                  success:
+                    type: boolean
+                    example: false
+                  data:
+                    type: string
+                    example: null
+                  message:
+                    type: string
+                    example: 'some error msg'
+      tags:
+        - Endpoints
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                payload:
+                  type: array
+                  description: 'needs the ref and name for each array item while description is optional.'
+                  example:
+                    -
+                      ref: T-1
+                      name: test
+                      description: null
+                    -
+                      ref: T-2
+                      name: test
+                      description: 'Test description'
+                  items:
+                    type: object
+                    properties:
+                      ref:
+                        type: string
+                        description: ''
+                        example: ducimus
+                      name:
+                        type: string
+                        description: ''
+                        example: officia
+                      description:
+                        type: string
+                        description: ''
+                        example: 'Voluptates ea omnis repellat dolorem.'
+                    required:
+                      - ref
+                      - name
+              required:
+                - payload
+      security: []
+  '/api/demo/test/activate/{ref}':
+    post:
+      summary: 'Activate Test'
+      operationId: activateTest
+      description: 'This endpoint is used to activate a test.'
+      parameters: []
+      responses:
+        200:
+          description: success
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  success: true
+                  data:
+                    id: 2
+                    ref: T-2
+                    name: test
+                    description: 'Test description'
+                    status: NEW
+                    is_active: 1
+                    created_at: '2023-11-26T16:30:02.000000Z'
+                    updated_at: '2023-11-26T20:29:21.000000Z'
+                  message: 'Test activated successfully'
+                properties:
+                  success:
+                    type: boolean
+                    example: true
+                  data:
+                    type: object
+                    properties:
+                      id:
+                        type: integer
+                        example: 2
+                      ref:
+                        type: string
+                        example: T-2
+                      name:
+                        type: string
+                        example: test
+                      description:
+                        type: string
+                        example: 'Test description'
+                      status:
+                        type: string
+                        example: NEW
+                      is_active:
+                        type: integer
+                        example: 1
+                      created_at:
+                        type: string
+                        example: '2023-11-26T16:30:02.000000Z'
+                      updated_at:
+                        type: string
+                        example: '2023-11-26T20:29:21.000000Z'
+                  message:
+                    type: string
+                    example: 'Test activated successfully'
+        422:
+          description: 'Some Validation Error || ref in db found with status inactive || Other Exception'
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  success: false
+                  data: null
+                  message: 'The test either does not exist or already activated.'
+                properties:
+                  success:
+                    type: boolean
+                    example: false
+                  data:
+                    type: string
+                    example: null
+                  message:
+                    type: string
+                    example: 'The test either does not exist or already activated.'
+      tags:
+        - Endpoints
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                ref:
+                  type: string
+                  description: ''
+                  example: laboriosam
+              required:
+                - ref
+      security: []
+    parameters:
+      -
+        in: path
+        name: ref
+        description: 'needs to be exist in the database and the record  must be inactive priorly.'
+        example: T-2
+        required: true
+        schema:
+          type: string
+  '/api/demo/test/deactivate/{ref}':
+    post:
+      summary: 'Deactivate Test'
+      operationId: deactivateTest
+      description: 'This endpoint is used to deactivate a test.'
+      parameters: []
+      responses:
+        200:
+          description: success
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  success: true
+                  data:
+                    id: 2
+                    ref: T-2
+                    name: test
+                    description: 'Test description'
+                    status: NEW
+                    is_active: 0
+                    created_at: '2023-11-26T16:30:02.000000Z'
+                    updated_at: '2023-11-26T20:29:21.000000Z'
+                  message: 'Test deactivated successfully'
+                properties:
+                  success:
+                    type: boolean
+                    example: true
+                  data:
+                    type: object
+                    properties:
+                      id:
+                        type: integer
+                        example: 2
+                      ref:
+                        type: string
+                        example: T-2
+                      name:
+                        type: string
+                        example: test
+                      description:
+                        type: string
+                        example: 'Test description'
+                      status:
+                        type: string
+                        example: NEW
+                      is_active:
+                        type: integer
+                        example: 0
+                      created_at:
+                        type: string
+                        example: '2023-11-26T16:30:02.000000Z'
+                      updated_at:
+                        type: string
+                        example: '2023-11-26T20:29:21.000000Z'
+                  message:
+                    type: string
+                    example: 'Test deactivated successfully'
+        422:
+          description: 'Some Validation Error || ref in db found with status inactive || Other Exception'
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  success: false
+                  data: null
+                  message: 'The test either does not exist or already deactivated.'
+                properties:
+                  success:
+                    type: boolean
+                    example: false
+                  data:
+                    type: string
+                    example: null
+                  message:
+                    type: string
+                    example: 'The test either does not exist or already deactivated.'
+      tags:
+        - Endpoints
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                ref:
+                  type: string
+                  description: ''
+                  example: expedita
+              required:
+                - ref
+      security: []
+    parameters:
+      -
+        in: path
+        name: ref
+        description: 'needs to be exist in the database and the record  must be active priorly.'
+        example: T-2
+        required: true
+        schema:
+          type: string
+tags:
+  -
+    name: Endpoints
+    description: ''
