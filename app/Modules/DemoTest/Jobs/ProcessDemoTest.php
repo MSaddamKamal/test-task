@@ -64,9 +64,11 @@ class ProcessDemoTest implements ShouldQueue
             if ($this->attempts() == $this->tries) {
                 // Incrementing failed count in the inquiry
                 app(DemoTestInquiryService::class)->incrementFailedCount($this->inquiryId);
-            }else{
-                $this->release();
+                throw $e;
             }
+
+            $this->release();
+
         }
     }
 
