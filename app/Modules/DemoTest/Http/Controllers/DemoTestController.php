@@ -49,7 +49,7 @@ class DemoTestController extends Controller
      *      "message": "Test activated successfully"
      *  }
      *
-     * @response 422 scenario="Some Validation Error || ref in db found with status inactive || Other Exception"
+     * @response 422 scenario="Some Validation Error || ref in db found with status already active || Other Exception"
      * {
      *    "success": false,
      *    "data": null,
@@ -92,7 +92,7 @@ class DemoTestController extends Controller
      *     "message": "Test deactivated successfully"
      * }
      *
-     * @response 422 scenario="Some Validation Error || ref in db found with status inactive || Other Exception"
+     * @response 422 scenario="Some Validation Error || ref in db found with status already inactive || Other Exception"
      *  {
      *     "success": false,
      *     "data": null,

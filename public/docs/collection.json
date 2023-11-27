@@ -10,7 +10,7 @@
     ],
     "info": {
         "name": "Test Task",
-        "_postman_id": "3bcbeb67-ce9f-47c8-a4fe-c7adc9909428",
+        "_postman_id": "36efd2af-cfbb-4712-b509-077764ccbeeb",
         "description": "Rest Apis For Processing DemoTestInquires Using Job & Queues",
         "schema": "https:\/\/schema.getpostman.com\/json\/collection\/v2.1.0\/collection.json"
     },
@@ -93,7 +93,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\"ref\":\"laboriosam\"}"
+                            "raw": "{\"ref\":\"corporis\"}"
                         },
                         "description": "This endpoint is used to activate a test.",
                         "auth": {
@@ -111,7 +111,7 @@
                             "header": [],
                             "code": 422,
                             "body": "{\n   \"success\": false,\n   \"data\": null,\n   \"message\": \"The test either does not exist or already activated.\"\n}",
-                            "name": "Some Validation Error || ref in db found with status inactive || Other Exception"
+                            "name": "Some Validation Error || ref in db found with status already active || Other Exception"
                         }
                     ]
                 },
@@ -145,7 +145,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\"ref\":\"expedita\"}"
+                            "raw": "{\"ref\":\"mollitia\"}"
                         },
                         "description": "This endpoint is used to deactivate a test.",
                         "auth": {
@@ -163,7 +163,7 @@
                             "header": [],
                             "code": 422,
                             "body": "{\n    \"success\": false,\n    \"data\": null,\n    \"message\": \"The test either does not exist or already deactivated.\"\n }",
-                            "name": "Some Validation Error || ref in db found with status inactive || Other Exception"
+                            "name": "Some Validation Error || ref in db found with status already inactive || Other Exception"
                         }
                     ]
                 }

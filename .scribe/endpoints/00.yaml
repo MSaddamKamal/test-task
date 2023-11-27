@@ -45,7 +45,7 @@ endpoints:
         name: 'payload[].ref'
         description: ''
         required: true
-        example: ducimus
+        example: natus
         type: string
         enumValues: []
         exampleWasSpecified: false
@@ -54,7 +54,7 @@ endpoints:
         name: 'payload[].name'
         description: ''
         required: true
-        example: officia
+        example: itaque
         type: string
         enumValues: []
         exampleWasSpecified: false
@@ -63,7 +63,7 @@ endpoints:
         name: 'payload[].description'
         description: ''
         required: false
-        example: 'Voluptates ea omnis repellat dolorem.'
+        example: 'Quas voluptas consectetur dolores ea at qui.'
         type: string
         enumValues: []
         exampleWasSpecified: false
@@ -143,13 +143,13 @@ endpoints:
         name: ref
         description: ''
         required: true
-        example: laboriosam
+        example: corporis
         type: string
         enumValues: []
         exampleWasSpecified: false
         custom: []
     cleanBodyParameters:
-      ref: laboriosam
+      ref: corporis
     fileParameters: []
     responses:
       -
@@ -181,7 +181,7 @@ endpoints:
              "message": "The test either does not exist or already activated."
           }
         headers: []
-        description: 'Some Validation Error || ref in db found with status inactive || Other Exception'
+        description: 'Some Validation Error || ref in db found with status already active || Other Exception'
         custom: []
     responseFields: []
     auth: []
@@ -224,13 +224,13 @@ endpoints:
         name: ref
         description: ''
         required: true
-        example: expedita
+        example: mollitia
         type: string
         enumValues: []
         exampleWasSpecified: false
         custom: []
     cleanBodyParameters:
-      ref: expedita
+      ref: mollitia
     fileParameters: []
     responses:
       -
@@ -262,7 +262,7 @@ endpoints:
               "message": "The test either does not exist or already deactivated."
            }
         headers: []
-        description: 'Some Validation Error || ref in db found with status inactive || Other Exception'
+        description: 'Some Validation Error || ref in db found with status already inactive || Other Exception'
         custom: []
     responseFields: []
     auth: []

@@ -81,15 +81,15 @@ paths:
                       ref:
                         type: string
                         description: ''
-                        example: ducimus
+                        example: natus
                       name:
                         type: string
                         description: ''
-                        example: officia
+                        example: itaque
                       description:
                         type: string
                         description: ''
-                        example: 'Voluptates ea omnis repellat dolorem.'
+                        example: 'Quas voluptas consectetur dolores ea at qui.'
                     required:
                       - ref
                       - name
@@ -156,7 +156,7 @@ paths:
                     type: string
                     example: 'Test activated successfully'
         422:
-          description: 'Some Validation Error || ref in db found with status inactive || Other Exception'
+          description: 'Some Validation Error || ref in db found with status already active || Other Exception'
           content:
             application/json:
               schema:
@@ -187,7 +187,7 @@ paths:
                 ref:
                   type: string
                   description: ''
-                  example: laboriosam
+                  example: corporis
               required:
                 - ref
       security: []
@@ -260,7 +260,7 @@ paths:
                     type: string
                     example: 'Test deactivated successfully'
         422:
-          description: 'Some Validation Error || ref in db found with status inactive || Other Exception'
+          description: 'Some Validation Error || ref in db found with status already inactive || Other Exception'
           content:
             application/json:
               schema:
@@ -291,7 +291,7 @@ paths:
                 ref:
                   type: string
                   description: ''
-                  example: expedita
+                  example: mollitia
               required:
                 - ref
       security: []

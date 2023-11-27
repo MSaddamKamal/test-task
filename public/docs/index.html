@@ -91,7 +91,7 @@
     </ul>
 
     <ul class="toc-footer" id="last-updated">
-        <li>Last updated: November 26, 2023</li>
+        <li>Last updated: November 27, 2023</li>
     </ul>
 </div>
 
@@ -290,10 +290,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                               name="payload.0.ref"                data-endpoint="POSTapi-demo-test"
-               value="ducimus"
+               value="natus"
                data-component="body">
     <br>
-<p>Example: <code>ducimus</code></p>
+<p>Example: <code>natus</code></p>
                     </div>
                                                                 <div style="margin-left: 14px; clear: unset;">
                         <b style="line-height: 2;"><code>name</code></b>&nbsp;&nbsp;
@@ -301,10 +301,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                               name="payload.0.name"                data-endpoint="POSTapi-demo-test"
-               value="officia"
+               value="itaque"
                data-component="body">
     <br>
-<p>Example: <code>officia</code></p>
+<p>Example: <code>itaque</code></p>
                     </div>
                                                                 <div style="margin-left: 14px; clear: unset;">
                         <b style="line-height: 2;"><code>description</code></b>&nbsp;&nbsp;
@@ -312,10 +312,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
 <i>optional</i> &nbsp;
                 <input type="text" style="display: none"
                               name="payload.0.description"                data-endpoint="POSTapi-demo-test"
-               value="Voluptates ea omnis repellat dolorem."
+               value="Quas voluptas consectetur dolores ea at qui."
                data-component="body">
     <br>
-<p>Example: <code>Voluptates ea omnis repellat dolorem.</code></p>
+<p>Example: <code>Quas voluptas consectetur dolores ea at qui.</code></p>
                     </div>
                                     </details>
         </div>
@@ -338,7 +338,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
-    \"ref\": \"laboriosam\"
+    \"ref\": \"corporis\"
 }"
 </code></pre></div>
 
@@ -354,7 +354,7 @@ const headers = {
 };
 
 let body = {
-    "ref": "laboriosam"
+    "ref": "corporis"
 };
 
 fetch(url, {
@@ -387,7 +387,7 @@ fetch(url, {
 }</code>
  </pre>
             <blockquote>
-            <p>Example response (422, Some Validation Error || ref in db found with status inactive || Other Exception):</p>
+            <p>Example response (422, Some Validation Error || ref in db found with status already active || Other Exception):</p>
         </blockquote>
                 <pre>
 
@@ -486,10 +486,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                               name="ref"                data-endpoint="POSTapi-demo-test-activate--ref-"
-               value="laboriosam"
+               value="corporis"
                data-component="body">
     <br>
-<p>Example: <code>laboriosam</code></p>
+<p>Example: <code>corporis</code></p>
         </div>
         </form>
 
@@ -510,7 +510,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
-    \"ref\": \"expedita\"
+    \"ref\": \"mollitia\"
 }"
 </code></pre></div>
 
@@ -526,7 +526,7 @@ const headers = {
 };
 
 let body = {
-    "ref": "expedita"
+    "ref": "mollitia"
 };
 
 fetch(url, {
@@ -559,7 +559,7 @@ fetch(url, {
 }</code>
  </pre>
             <blockquote>
-            <p>Example response (422, Some Validation Error || ref in db found with status inactive || Other Exception):</p>
+            <p>Example response (422, Some Validation Error || ref in db found with status already inactive || Other Exception):</p>
         </blockquote>
                 <pre>
 
@@ -658,10 +658,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                               name="ref"                data-endpoint="POSTapi-demo-test-deactivate--ref-"
-               value="expedita"
+               value="mollitia"
                data-component="body">
     <br>
-<p>Example: <code>expedita</code></p>
+<p>Example: <code>mollitia</code></p>
         </div>
         </form>
 
